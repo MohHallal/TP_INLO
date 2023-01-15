@@ -1,7 +1,7 @@
 """This module is used to execute the script on file(s) using the terminal"""
 import sys
 import os
-def adn_read(fastafile):
+def check_dna_fasta(fastafile):
     """This function is used to check if the file
     is FASTA file of a DNA sequence"""
     if os.path.exists(fastafile): # Check the existence of the file
