@@ -1,4 +1,4 @@
-"""This module is used to call the script from terminal on file(s)"""
+"""This module is used to execute the script on file(s) using the terminal"""
 import sys
 import os
 def adn_read(fastafile):
