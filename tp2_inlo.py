@@ -35,4 +35,4 @@ def check_dna_fasta(fastafile):
         print("The file " + fastafile + " doesn't exist.")
 if __name__ == "__main__":
     for arg in sys.argv[1:]:
-        adn_read(arg)
+        check_dna_fasta(arg)
