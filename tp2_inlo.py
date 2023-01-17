@@ -6,9 +6,8 @@ def check_dna_fasta(fastafile):
     is FASTA file of a DNA sequence"""
     if os.path.exists(fastafile): # Check the existence of the file
         with open(fastafile, "r", encoding="utf-8") as file:
-            if fastafile[-3:] == ".fa" or fastafile[-4:] == ".fna" or \
-                    fastafile[-4:] == ".ffn" or fastafile[-4:] == ".faa" \
-                    or fastafile[-4:] == ".frn": # Check the extension
+            if file.read(1)==">":
+                file.seek(0)
                 nucleotides = ("A", "C", "G", "T")
                 counter = 0
                 header = ""
@@ -30,9 +29,14 @@ def check_dna_fasta(fastafile):
                                        + str(column_counter)
                                        + " for sequence "+header[1:])
             else:
-                print("The file" + fastafile + " is not a FASTA file")
+                print("The file " + fastafile + " is not a FASTA file.")
     else:
         print("The file " + fastafile + " doesn't exist.")
 if __name__ == "__main__":
     for arg in sys.argv[1:]:
-        check_dna_fasta(arg)
+        if arg[-3:] == ".fa" or arg[-4:] == ".fna" or \
+                arg[-4:] == ".ffn" or arg[-4:] == ".faa" \
+                or arg[-4:] == ".frn":  # Check the extension
+            check_dna_fasta(arg)
+        else:
+            print("The file " + arg + " is not a FASTA file.")
