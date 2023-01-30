@@ -22,7 +22,23 @@ class Binary_tree():
                 retour += "\n"
                 retour += tree.print_tree(position+2)
         return retour
-        
+    def tree_size(self,node):
+        tree=Binary_tree()
+        tree.root=node
+        count = 0
+        print(node.right, node.left)
+        if node.left:
+            tree = Binary_tree()
+            tree.root = node.left
+            count = 1 + tree.tree_size(node.left)
+        if node.right:
+            tree = Binary_tree()
+            tree.root = node.right
+            count=  1 + tree.tree_size(node.right)
+        if node.is_leaf():
+            return 1
+        return count
+
 class Node():
     def __init__(self, value):
         self.value=value
@@ -97,10 +113,11 @@ node4.add(node5)
 node8 = Node(8)
 #node7.add(node8)
 node7.add(Node(8))
-#tree1.root=node5
+#tree1.root=node1
 
 #print(str(node1.get_max_depth(0)))
 
 
 #print(node1.display_node())
 print(tree1.print_tree(1))
+print(tree1.tree_size(node1))
