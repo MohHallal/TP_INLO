@@ -26,7 +26,6 @@ class Binary_tree():
         tree=Binary_tree()
         tree.root=node
         count = 0
-        print(node.right, node.left)
         if node.left:
             tree = Binary_tree()
             tree.root = node.left
