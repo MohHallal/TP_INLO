@@ -1,4 +1,4 @@
-"""hhhhhh"""
+"""ce package est utilisé pour remplacé un fichier par le nouveau"""
 import os
 from animal import Animal
 class Model():

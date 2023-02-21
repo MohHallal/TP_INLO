@@ -1,6 +1,8 @@
+""" L'import de tkinter"""
 from tkinter import *
 
 class Application(Tk):
+    """ La classe qui crée l'interface"""
     def __init__(self, controller):
         Tk.__init__(self)
         self.controller = controller
@@ -78,9 +80,11 @@ class Application(Tk):
         self.controller.display(self.search.get())
 
     def display_label(self, value):
+        """ Une méthode affiche un animal lorsque on fait la recherche"""
         self.label1['text'] = value
 
     def add_animal(self):
+        """ Une méthode qui ajoute un animal et puis vide les cases"""
         dict_animal = {}
         for key in self.entries:
             dict_animal[key] = self.entries[key].get()
@@ -90,9 +94,11 @@ class Application(Tk):
         self.open_popup()
 
     def delete_animal(self):
+        """ Une méthode qui supprime un animal"""
         for i in self.listbox.curselection():
             self.controller.delete_animal(self.listbox.get(i))
     def update_entries(self,_):
+        """ Une méthode qui remplie par défaults les entrées selon le choix dans le listbox"""
         for att in self.attributes:
             self.entries_modify[att].delete(0,END)
         nbr_entries = len(self.attributes)
@@ -102,6 +108,7 @@ class Application(Tk):
                 self.entries_modify[self.attributes[i]].insert(0, updates[i])
 
     def modify_animal(self):
+        """ Une méthode qui modifie un animal puis vide les cases"""
         the_update = ""
         for key in self.entries_modify:
             the_update = the_update + str(self.entries_modify[key].get()) + ","
@@ -111,13 +118,15 @@ class Application(Tk):
         for key in self.entries_modify:
             self.entries_modify[key].delete(0,END)
     def view_window(self):
+        """ Une méthode qui fait l'affichage"""
         self.title("Ma Première App :-)")
         self.mainloop()
     def open_popup(self):
-       self.top= Toplevel(self)
-       self.top.geometry("750x250")
-       self.top.title("Pop-up")
-       Label(self.top, text= "Animal sauvé avec succés!", font=('Mistral 18 bold')).place(x=150,y=80)
+        """Une méthode qui crée pop up aprés qu'on sauve un animal"""
+        self.top= Toplevel(self)
+        self.top.geometry("750x250")
+        self.top.title("Pop-up")
+        Label(self.top, text= "Animal sauvé avec succés!", font=('Mistral 18 bold')).place(x=150,y=80)
 
 if __name__ == "__main__":
     app = Application()

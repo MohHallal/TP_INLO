@@ -1,4 +1,5 @@
 class Animal():
+    """La classe animal."""
     def __init__(self, species, age, diet, foot, name):
         self.species = species
         self.age = age
